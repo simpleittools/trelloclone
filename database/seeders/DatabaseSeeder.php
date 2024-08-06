@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Board;
+use App\Models\Column;
 use App\Models\User;
+
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,9 +18,19 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
+//        User::factory()->create([
+//            'name' => 'ryan',
+//            'email' => 'ryan@test.test',
+//        ]);
+//
+        $this->call([
+            UserSeeder::class,
+            BoardSeeder::class,
+            ColumnSeeder::class,
+            CardSeeder::class,
         ]);
+
+//        $this->call(BoardSeeder::class);
+//        $this->call(ColumSeeder::class);
     }
 }
