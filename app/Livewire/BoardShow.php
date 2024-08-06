@@ -16,6 +16,33 @@ class BoardShow extends Component
         $this->authorize('show', $this->board);
     }
 
+    public function moved(array $items)
+    {
+        // iterate over each of the columns
+        collect($items)->recursive()->each(function ($column) {
+            $columnId = $column->get('value');
+
+            // find all cards that have switched columns and update
+            $order = $column->get('items')->pluck('value')->toArray();
+
+            \App\Models\Card::where('user_id', auth()->id())
+                ->find($order)
+                ->where('column_id', "!=", $columnId)
+                ->each->update([
+                    'column_id' => $columnId,
+                ]);
+
+            \App\Models\Card::setNewOrder($order, 1, 'id', function (Builder $query) {
+                $query->where('user_id', auth()->id());
+            });
+
+
+            // get the order of the cards inside the column
+        });
+
+
+    }
+
 
     #[Layout('layouts.app')]
     public function render()
@@ -33,4 +60,5 @@ class BoardShow extends Component
             $query->where('user_id', auth()->id());
         });
     }
+
 }
