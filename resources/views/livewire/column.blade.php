@@ -15,7 +15,7 @@
 
             <template x-if="editing">
                 <form class="-ml-[calc(theme('margin[1.5]')+1px)] grow">
-                    <x-text-input value="Column Title" class="h-8 px-1.5 w-full"></x-text-input>
+                    <x-text-input value="{{ $column->title }}" class="h-8 px-1.5 w-full"></x-text-input>
                 </form>
             </template>
 
@@ -38,7 +38,7 @@
     </div>
     <div class="p-3 space-y-1.5 pt-0 overflow-y-scroll">
         @foreach ( $cards as $card)
-            <livewire:card wire:key="$card->id" :card="$card"/>
+        <livewire:card wire:key="$card->id" :card="$card"/>
         @endforeach
     </div>
     <div class="p-3">
