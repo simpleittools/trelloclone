@@ -50,7 +50,5 @@
 
         @endforeach
     </div>
-    <div class="p-3">
-        create card
-    </div>
+
 </div>
