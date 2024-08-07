@@ -14,9 +14,14 @@ class Card extends Model implements Sortable
     use HasFactory;
 
     protected $guarded = ['id'];
-    
+
     public $sortable = [
         'order_column_name' => 'order',
         'sort_when_creating' => true,
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

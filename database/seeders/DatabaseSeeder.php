@@ -29,8 +29,5 @@ class DatabaseSeeder extends Seeder
             ColumnSeeder::class,
             CardSeeder::class,
         ]);
-
-//        $this->call(BoardSeeder::class);
-//        $this->call(ColumSeeder::class);
     }
 }
