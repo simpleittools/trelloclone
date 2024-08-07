@@ -9,13 +9,18 @@
                 class="text-left w-full font-medium"
                 x-on:click="editing = true"
                 x-show="!editing"
+                x-on:column-updated.window="editing = false"
             >
                 {{ $column->title }}
             </button>
 
             <template x-if="editing">
-                <form class="-ml-[calc(theme('margin[1.5]')+1px)] grow">
-                    <x-text-input value="{{ $column->title }}" class="h-8 px-1.5 w-full"></x-text-input>
+                <form wire:submit="updateColumn" class="-ml-[calc(theme('margin[1.5]')+1px)] grow">
+                    <x-text-input
+                        value="Column Title"
+                        class="h-8 px-1.5 w-full"
+                        wire:model="editColumnForm.title"
+                    ></x-text-input>
                 </form>
             </template>
 
