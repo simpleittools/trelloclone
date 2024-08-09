@@ -1,4 +1,4 @@
-<div>
-    Edit Card {{ $card->id }}
+<x-modal-wrapper title="Edit Card">
+    Edit Card {{ $card->title }}
 
-</div>
+</x-modal-wrapper>
