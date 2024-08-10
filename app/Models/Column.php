@@ -21,6 +21,15 @@ class Column extends Model implements Sortable
         'sort_when_creating' => true,
     ];
 
+    protected $casts = [
+        'archived_at' => 'datetime'
+    ];
+
+    public function scopeNotArchived(Builder $query): void
+    {
+        $query->whereNull('archived_at');
+    }
+
 
     public function cards()
     {
