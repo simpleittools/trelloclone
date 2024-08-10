@@ -27,7 +27,12 @@ class Card extends Model implements Sortable
 
     public function scopeNotArchived(Builder $query): void
     {
-        $query->whereNull('archived_at');
+        $query->whereNull('cards.archived_at');
+    }
+
+    public function scopeArchived(Builder $query): void
+    {
+        $query->whereNotNull('cards.archived_at');
     }
 
     public function column()
