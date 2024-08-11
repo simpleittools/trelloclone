@@ -21,7 +21,7 @@ class ColumnArchive extends ModalComponent
     public function render()
     {
         return view('livewire.modals.column-archive', [
-            'columns' => $this->board->columns()->archived()->get()
+            'columns' => $this->board->columns()->archived()->latestArchived()->get()
         ]);
     }
 }

@@ -22,7 +22,7 @@ class CardArchive extends ModalComponent
     {
         return view('livewire.modals.card-archive', [
             // @todo order by when archived
-            'cards' => $this->board->cards()->archived()->get()
+            'cards' => $this->board->cards()->archived()->latestArchived()->get()
         ]);
     }
 }
