@@ -5,7 +5,7 @@
                 <div>
                     {{ $card->title }}
                 </div>
-                <button class="text-sm text-gray-500">Restore</button>
+                <button class="text-sm text-gray-500" wire:click="unarchiveCard({{ $card->id }})">Restore</button>
             </div>
         @empty
             <p>You have no archived cards.</p>
