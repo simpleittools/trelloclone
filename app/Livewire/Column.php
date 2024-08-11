@@ -25,21 +25,25 @@ class Column extends Component
 
     public function archiveColumn()
     {
+        $this->authorize('update', $this->column);
+
         $this->column->update(['archived_at' => now()]);
         $this->dispatch('board-updated');
     }
 
     public function updateColumn(): void
     {
+        $this->authorize('update', $this->column);
+
         $this->editColumnForm->validate();
-
         $this->column->update($this->editColumnForm->only('title'));
-
         $this->dispatch('column-updated');
     }
 
     public function createCard(): void
     {
+        $this->authorize('createCard', $this->column);
+
         $this->createCardForm->validate();
         $card = $this->column->cards()->make($this->createCardForm->only('title'));
         $card->user()->associate(auth()->user());
