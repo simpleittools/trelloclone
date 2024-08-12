@@ -19,6 +19,11 @@ class Column extends Model implements Sortable
 
     protected $guarded = [];
 
+    public function builder(): Builder
+    {
+        return static::query()->where('board_id', $this->board_id);
+    }
+
     public $sortable = [
         'order_column_name' => 'order',
         'sort_when_creating' => true,
