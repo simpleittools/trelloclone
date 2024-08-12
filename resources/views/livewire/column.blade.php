@@ -20,6 +20,7 @@
                         value="Column Title"
                         class="h-8 px-1.5 w-full"
                         wire:model="editColumnForm.title"
+                        x-init="$el.focus()"
                     ></x-text-input>
                 </form>
             </template>
