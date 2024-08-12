@@ -46,6 +46,7 @@
     <div
         class="p-3 space-y-1.5 pt-0 overflow-y-scroll"
         wire:sortable-group.item-group="{{ $column->id }}"
+        wire:sortable-group.options="{ ghostClass: 'opacity-20' }"
     >
         @foreach ( $cards as $card)
             <div
